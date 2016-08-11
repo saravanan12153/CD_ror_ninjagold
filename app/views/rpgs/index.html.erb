@@ -1,0 +1,53 @@
+<div id="wrapper">
+    <div id="top">
+        <h3>Your Gold: <%= session[:gold_count] =%> </span></h3>
+    </div>
+    <div id="fouroptions">
+        <div class="fchc">
+            <h3>Farm</h3>
+            <p>(Earns 10-20 golds)</p>
+            <form action="/farm" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="action" value="farm">
+            <input type="submit" value="Find Gold!" class="btn btn-default">
+            </form>
+        </div>
+        <div class="fchc">
+            <h3>Cave</h3>
+            <p>(Earns 5-10 golds)</p>
+            <form action="/cave" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="action" value="cave">
+            <input type="submit" value="Find Gold!" class="btn btn-default">
+            </form>
+        </div>
+        <div class="fchc">
+            <h3>House</h3>
+            <p>(Earns 2-5 golds)</p>
+            <form action="/house" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="action" value="house">
+            <input type="submit" value="Find Gold!" class="btn btn-default">
+            </form>
+        </div>
+        <div class="fchc">
+            <h3>Casino</h3>
+            <p>(Earns/takes 0-50 golds)</p>
+            <form action="/casino" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="action" value="casino">
+            <input type="submit" value="Find Gold!" class="btn btn-default">
+            </form>
+        </div>
+    </div>
+    <div id="activities">
+        <h4>Activities:</h4>
+        <div id=activities_container>
+            <% session[:activities].reverse_each do |activity| %>
+               <p> <%= activity %> </p>
+           <% end %>
+        </div>
+        <button class="btn btn-default"><a href="/reset" data-method="post">Reset</a></button>
+
+    </div>
+</div>
